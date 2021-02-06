@@ -9,6 +9,7 @@ public class MainPage {
 	WebElement usernameField;
 	WebElement passwordField;
 	WebElement loginButton;
+	WebElement userLockedOutLabel;
 	
 	public MainPage(WebDriver driver) {
 		//super();
@@ -27,6 +28,10 @@ public class MainPage {
 		return driver.findElement(By.id("login-button"));
 	}
 	
+	public WebElement getUserLockedOutLabel() {
+		return driver.findElement(By.cssSelector("h3[data-test='error']"));
+	}
+
 	public void inputUsername(String username) {
 		getUsernameField().clear();
 		getUsernameField().sendKeys(username);
@@ -40,4 +45,5 @@ public class MainPage {
 	public void clickLoginButton() {
 		getLoginButton().click();
 	}
+	
 }
