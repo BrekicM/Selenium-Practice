@@ -35,6 +35,30 @@ public class LoginTests extends TestBase{
 		Assert.assertEquals(true, mainPage.getUserLockedOutLabel().isDisplayed());
 	}
 	
+	@Test
+	public void problemUserLoginAndLogout() throws InterruptedException {
+		mainPage.inputUsername(excelReader.getCellData("problem", 2, 1));
+		mainPage.inputPassword(excelReader.getCellData("problem", 2, 2));
+		mainPage.clickLoginButton();
+		Assert.assertEquals(productsPage.productsMenuLabelText(), "Products");
+		productsPage.clickBurgerButton();
+		wait.until(ExpectedConditions.elementToBeClickable(productsPage.getSidebarOptionLogout()));
+		productsPage.sidebarOptionLogoutClick();
+		Assert.assertEquals(true, mainPage.getLoginButton().isDisplayed());
+	}
+	
+	@Test
+	public void performanceGlitchUserLoginAndLogout() throws InterruptedException {
+		mainPage.inputUsername(excelReader.getCellData("performanceGlitch", 2, 1));
+		mainPage.inputPassword(excelReader.getCellData("performanceGlitch", 2, 2));
+		mainPage.clickLoginButton();
+		Assert.assertEquals(productsPage.productsMenuLabelText(), "Products");
+		productsPage.clickBurgerButton();
+		wait.until(ExpectedConditions.elementToBeClickable(productsPage.getSidebarOptionLogout()));
+		productsPage.sidebarOptionLogoutClick();
+		Assert.assertEquals(true, mainPage.getLoginButton().isDisplayed());
+	}
+	
 	@AfterMethod
 	public void clearRefresh() {
 		driver.manage().deleteAllCookies();

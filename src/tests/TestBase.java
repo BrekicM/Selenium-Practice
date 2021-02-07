@@ -8,6 +8,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
+import pages.CartPage;
+import pages.CheckoutPage;
+import pages.FinishPage;
+import pages.InfoPage;
 import pages.MainPage;
 import pages.ProductsPage;
 
@@ -17,6 +21,10 @@ public class TestBase {
 	MainPage mainPage;
 	ExcelReader excelReader;
 	ProductsPage productsPage;
+	CartPage cartPage;
+	InfoPage infoPage;
+	CheckoutPage checkoutPage;
+	FinishPage finishPage;
 	
 	@BeforeClass
 	public void beforeClass() throws IOException {
@@ -26,6 +34,10 @@ public class TestBase {
 		this.excelReader = new ExcelReader("data/logindata.xlsx");
 		this.mainPage = new MainPage(driver);
 		this.productsPage = new ProductsPage(driver);
+		this.cartPage = new CartPage(driver);
+		this.infoPage = new InfoPage(driver);
+		this.checkoutPage = new CheckoutPage(driver);
+		this.finishPage = new FinishPage(driver);
 		driver.manage().window().maximize();
 	}
 	

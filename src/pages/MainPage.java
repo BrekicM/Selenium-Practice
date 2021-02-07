@@ -46,4 +46,10 @@ public class MainPage {
 		getLoginButton().click();
 	}
 	
+	public void logIn(String username, String password) {
+		getUsernameField().clear();
+		getUsernameField().sendKeys(username);
+		getPasswordField().clear();
+		getPasswordField().sendKeys(password);
+	}
 }
